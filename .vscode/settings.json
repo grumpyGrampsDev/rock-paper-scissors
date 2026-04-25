@@ -1,0 +1,75 @@
+{
+  // -------------------------
+  // 🎨 THEME (LOCKED)
+  // -------------------------
+  "workbench.colorTheme": "Catpuccin Mocha Transparent",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.autoDetectColorScheme": false,
+
+  // -------------------------
+  // 🔤 FONT (READABILITY)
+  // -------------------------
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 22,
+  "editor.fontLigatures": true,
+
+  // -------------------------
+  // 🧠 EDITOR BEHAVIOR
+  // -------------------------
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.scrollBeyondLastLine": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "breadcrumbs.enabled": true,
+  "search.followSymlinks": false,
+
+  // -------------------------
+  // ⚡ ESLINT + FORMAT ON SAVE
+  // -------------------------
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // -------------------------
+  // 📁 FILE + WORKSPACE BEHAVIOR
+  // -------------------------
+  "files.autoSave": "onFocusChange",
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "none",
+  "workbench.editor.highlightModifiedTabs": true,
+  "explorer.compactFolders": true,
+
+  // -------------------------
+  // 🧱 UI SIMPLICITY
+  // -------------------------
+  "workbench.statusBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.editor.empty.hint": "hidden",
+
+  // -------------------------
+  // 🧹 LANGUAGE SPECIFICS
+  // -------------------------
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // -------------------------
+  // 🧪 ESLINT (SAFE DEFAULT)
+  // -------------------------
+  "eslint.validate": ["javascript", "html"]
+}
