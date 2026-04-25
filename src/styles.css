@@ -1,0 +1,36 @@
+body {
+  display: flex;
+
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#title {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+#heroBox {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 12px double darkblue;
+  background-color: blanchedalmond;
+  padding: 16px;
+  margin: 32px;
+}
+
+#heroHead {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+#howTo {
+  display: flex;
+  flex-flow: column wrap;
+}
