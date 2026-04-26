@@ -1,27 +1,68 @@
 console.log("The script is loaded");
 
+const computerScore = 0;
+const humanScore = 0;
+
 function getComputerChoice(string) {
-  let choice = Math.floor(Math.random() * 10);
-  if (choice <= 3) {
-    console.log("Rock");
-  } else if (choice > 3 && choice < 7) {
-    console.log("Paper");
-  } else if (choice >= 7 && choice <= 10) {
-    console.log("Scissors");
+  let compChoice = Math.floor(Math.random() * 10);
+  if (compChoice <= 3) {
+    return "Rock";
+  } else if (compChoice > 3 && compChoice < 7) {
+    return "Paper";
+  } else if (compChoice >= 7 && compChoice <= 10) {
+    return "Scissors";
   } else {
-    console.log("A value outside the expected range was returned");
+    return "A value outside the expected range was returned";
   }
 }
 
 function getHumanChoice(string) {
-  let userChoice = prompt("What are you throwing?");
+  let humanChoice = prompt("What are you throwing?");
+  if (!humanChoice) return "Invalid input";
   if (
-    userChoice === ("rock" || "Rock" || "ROCK") ||
-    userChoice === ("paper" || "Paper" || "PAPER") ||
-    userChoice === ("scissors" || "Scissors" || "SCISSORS")
+    humanChoice.toLowerCase() === "rock" ||
+    humanChoice.toLowerCase() === "paper" ||
+    humanChoice.toLowerCase() === "scissors"
   ) {
-    return userChoice;
+    return humanChoice;
   } else {
     return "Throw an appropriate object.";
+  }
+}
+
+function playRound() {
+  // empty () passes values from getComputerChoice and getHumanChoice
+  let compChoice = getComputerChoice();
+  let humanChoice = getHumanChoice();
+  console.log(humanChoice, compChoice);
+  if (humanChoice.toLowerCase() === compChoice.toLowerCase())
+    return "We have a tie!";
+
+  if (
+    (humanChoice.toLowerCase() === "rock" &&
+      compChoice.toLowerCase() === "paper") ||
+    (humanChoice.toLowerCase() === "paper" &&
+      compChoice.toLowerCase() === "scissors") ||
+    (humanChoice.toLowerCase() === "scissors" &&
+      compChoice.toLowerCase() === "rock")
+  ) {
+    return (
+      "Rats! You've lost this round." +
+      " " +
+      compChoice +
+      " " +
+      "beats" +
+      " " +
+      humanChoice
+    );
+  } else {
+    return (
+      "Congrats! You've won this round." +
+      " " +
+      humanChoice +
+      "beats" +
+      " " +
+      compChoice
+    );
   }
 }
