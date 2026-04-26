@@ -12,3 +12,16 @@ function getComputerChoice(string) {
     console.log("A value outside the expected range was returned");
   }
 }
+
+function getHumanChoice(string) {
+  let userChoice = prompt("What are you throwing?");
+  if (
+    userChoice === ("rock" || "Rock" || "ROCK") ||
+    userChoice === ("paper" || "Paper" || "PAPER") ||
+    userChoice === ("scissors" || "Scissors" || "SCISSORS")
+  ) {
+    return userChoice;
+  } else {
+    return "Throw an appropriate object.";
+  }
+}
