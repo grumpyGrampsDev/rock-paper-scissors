@@ -69,7 +69,7 @@ function getFinalWinner(results) {
 }
 
 function playGame() {
-  let scores = Array.from({ length: 5 }, () => playRound());
+  let scores = Array.from({}, () => playRound()); //  length: 5 - removed Array.from length
 
   const formattedScores = scores.map((s) =>
     typeof s === "string" ? s[0].toUpperCase() + s.slice(1) : s,
@@ -80,3 +80,18 @@ function playGame() {
   console.log(formattedScores);
   return declareWinner;
 }
+
+//////   BUILDING THE BUTTON UI INTERACTION    ///////
+// click event
+//    ↓
+// event.target
+//    ↓
+// extract "choice value"
+//    ↓
+// pass into game logic
+
+document.querySelectorAll(".choice");
+// use event.target.dataset to target which button was selected and retrieve stored value
+// the value is stored in data-choice which converts to
+// dataset.choice
+// data-user-selection to dataset.userSelection (kebab to camel)
