@@ -3,25 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <title>Rock, Paper, Scissors in Console</title>
-    <link rel="stylesheet" href="src/styles.css" />
-    <script src="src/script.js" defer></script>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script src="/src/script.js" defer></script>
   </head>
   <body>
     <section id="title"><h1>Rock Paper Scissors</h1></section>
     <section id="heroBox">
       <hero>
         <div id="heroHead">
-          <h1>How to play</h1>
+          <h1>Rock Paper Scissors</h1>
         </div>
         <div id="howTo">
-          <h4>This game is played entirely within the console</h4>
-          <p>
-            To open the console, press ctrl+shift+j (windows) or cmd+opt+j (mac)
+          <h4>(Rules, in case we forgot)</h4>
+          <section class="rules">
+            Yes, it&apos;s that game. The one humans have been arguing about
+            since before computers were asked to settle it.
             <br />
-            Use the command playGame() to play.
-          </p>
+            You pick one of three options: Rock - Paper - Scissors Then the
+            rules do what they&apos;ve always done, regardless of your
+            confidence level:
+            <br />
+            Rock crushes Scissors
+            <br />
+            Scissors cuts Paper
+            <br />
+            Paper covers Rock
+            <br />
+            If both players pick the same thing, nothing happens except
+            disappointment and a rematch.
+          </section>
+          <section class="blurb">
+            Notes from Gramps - There is no secret fourth option - No, you
+            can&apos;t “think harder” to change the outcome - Yes, you will
+            still lose to randomness occasionally, and no, the universe will not
+            compensate you for it Good luck.
+            <br />
+            <div class="answer">42</div>
+          </section>
         </div>
       </hero>
+    </section>
+    <section class="gameUI">
+      <!-- data-choice stores the value of the button via a special object on the element -->
+      <button class="choice" data-choice="rock">Rock</button>
+      <button class="choice" data-choice="paper">Paper</button>
+      <button class="choice" data-choice="scissors">Scissors</button>
     </section>
   </body>
 </html>
