@@ -70,3 +70,6 @@ To demonstrate:
 Rock Paper Scissors is not complicated.
 
 It just _feels_ like it should be.
+
+background image used: https://www.publicdomainpictures.net/en/view-image.php?image=573164&picture=poor-man
+creator: mohamed mahmoud hassan

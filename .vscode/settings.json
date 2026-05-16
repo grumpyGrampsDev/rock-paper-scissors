@@ -2,17 +2,17 @@
   // -------------------------
   // 🎨 THEME (LOCKED)
   // -------------------------
-  "workbench.colorTheme": "Catpuccin Mocha Transparent",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "material-icon-theme",
   "window.autoDetectColorScheme": false,
 
   // -------------------------
   // 🔤 FONT (READABILITY)
   // -------------------------
-  "editor.fontFamily": "JetBrains Mono",
-  "editor.fontSize": 14,
-  "editor.lineHeight": 22,
+  "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "normal",
 
   // -------------------------
   // 🧠 EDITOR BEHAVIOR

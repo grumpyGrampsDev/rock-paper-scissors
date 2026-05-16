@@ -1,97 +1,129 @@
 console.log("The script is loaded");
 
-const computerScore = 0;
-const humanScore = 0;
+// STATE (shared)
+
+let roundsPlayed = 0;
+let results = [];
+let currentRoundContainer = null;
+
+// DOM
+
+const logContainer = document.getElementById("logContainer");
+const newGameBtn = document.getElementById("newGame");
+
+newGameBtn.classList.add("hidden");
+
+// ROUND CARDS UI
+
+function startNewRound() {
+  currentRoundContainer = document.createElement("div");
+  currentRoundContainer.classList.add("round-block");
+  logContainer.appendChild(currentRoundContainer);
+}
+
+// LOGGING
+
+function logMessage(message) {
+  const entry = document.createElement("p");
+  entry.textContent = message;
+
+  if (!currentRoundContainer) {
+    startNewRound();
+  }
+
+  currentRoundContainer.appendChild(entry);
+}
+
+// GAME LOGIC
 
 function getComputerChoice() {
-  let compChoice = Math.floor(Math.random() * 10);
+  const n = Math.floor(Math.random() * 10);
 
-  if (compChoice <= 3) {
-    return "rock";
-  } else if (compChoice > 3 && compChoice < 7) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+  if (n <= 3) return "rock";
+  if (n < 7) return "paper";
+  return "scissors";
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("What are you throwing?");
-  if (!humanChoice) return "Invalid";
+function playRound(humanChoice) {
+  const compChoice = getComputerChoice();
 
-  humanChoice = humanChoice.toLowerCase();
+  logMessage(`${humanChoice} vs ${compChoice}`);
 
-  if (
-    humanChoice === "rock" ||
-    humanChoice === "paper" ||
-    humanChoice === "scissors"
-  ) {
-    return humanChoice;
-  } else {
-    return "Invalid";
+  if (humanChoice === compChoice) {
+    logMessage("Tie");
+    return "tie";
   }
-}
-
-function playRound() {
-  let compChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
-
-  const displayHuman =
-    humanChoice !== "Invalid"
-      ? humanChoice[0].toUpperCase() + humanChoice.slice(1)
-      : humanChoice;
-
-  const displayComp = compChoice[0].toUpperCase() + compChoice.slice(1);
-
-  console.log(displayHuman, displayComp);
-
-  if (humanChoice === "Invalid") return "loss";
-  if (humanChoice === compChoice) return "tie";
 
   if (
     (humanChoice === "rock" && compChoice === "paper") ||
     (humanChoice === "paper" && compChoice === "scissors") ||
     (humanChoice === "scissors" && compChoice === "rock")
   ) {
+    logMessage("Loss");
     return "loss";
-  } else {
-    return "win";
   }
+
+  logMessage("Win");
+  return "win";
 }
 
 function getFinalWinner(results) {
-  const winCount = results.filter((result) => result === "win").length;
-  const lossCount = results.filter((result) => result === "loss").length;
+  const wins = results.filter((r) => r === "win").length;
+  const losses = results.filter((r) => r === "loss").length;
 
-  if (winCount > lossCount) return "You win the game!";
-  if (lossCount > winCount) return "Computer wins the game!";
+  if (wins > losses) return "You win the game!";
+  if (losses > wins) return "Computer wins the game!";
   return "The game is a tie!";
 }
 
-function playGame() {
-  let scores = Array.from({}, () => playRound()); //  length: 5 - removed Array.from length
+// INPUT HANDLING
 
-  const formattedScores = scores.map((s) =>
-    typeof s === "string" ? s[0].toUpperCase() + s.slice(1) : s,
-  );
+function userSelect() {
+  const btns = document.querySelectorAll(".choices");
 
-  const declareWinner = getFinalWinner(scores);
+  btns.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      if (roundsPlayed >= 5) return;
 
-  console.log(formattedScores);
-  return declareWinner;
+      const thrown = event.target.dataset.choice;
+
+      logMessage(`You threw: ${thrown}`);
+
+      const result = playRound(thrown);
+      results.push(result);
+
+      roundsPlayed++;
+
+      if (roundsPlayed < 5) {
+        startNewRound();
+      }
+
+      if (roundsPlayed === 5) {
+        logMessage(getFinalWinner(results));
+        newGameBtn.classList.remove("hidden");
+      }
+    });
+  });
 }
 
-//////   BUILDING THE BUTTON UI INTERACTION    ///////
-// click event
-//    ↓
-// event.target
-//    ↓
-// extract "choice value"
-//    ↓
-// pass into game logic
+// RESET
 
-document.querySelectorAll(".choice");
-// use event.target.dataset to target which button was selected and retrieve stored value
-// the value is stored in data-choice which converts to
-// dataset.choice
-// data-user-selection to dataset.userSelection (kebab to camel)
+function resetGame() {
+  roundsPlayed = 0;
+  results = [];
+  currentRoundContainer = null;
+
+  logContainer.replaceChildren();
+
+  newGameBtn.classList.add("hidden");
+
+  startNewRound();
+  logMessage("New game started");
+}
+
+// INIT
+
+newGameBtn.addEventListener("click", resetGame);
+
+userSelect();
+startNewRound();
