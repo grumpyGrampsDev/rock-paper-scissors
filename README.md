@@ -71,5 +71,21 @@ Rock Paper Scissors is not complicated.
 
 It just _feels_ like it should be.
 
-background image used: https://www.publicdomainpictures.net/en/view-image.php?image=573164&picture=poor-man
-creator: mohamed mahmoud hassan
+
+Creative Commons Useage: 
+
+Background image used: https://www.publicdomainpictures.net/en/view-image.php?image=573164&picture=poor-man
+    creator: mohamed mahmoud hassan
+
+Button images:
+    Rock: 
+     OpenClipart 14/06/2018 Stone Rubble 
+     https://freesvg.org/stone-rubble
+    Paper:
+     OpenClipart 06/02/2015 Paper roll vector clip art 
+     https://freesvg.org/paper-roll-vector-clip-art
+    Scissors:
+    OpenClipart 09/03/2021 Openclipartscissors
+    https://freesvg.org/openclipartscissors
+    
+    Creator Last Name, First Initial. (Year). Title of the image [Vector graphic]. FreeSVG.org. URL.

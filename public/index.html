@@ -9,7 +9,7 @@
   <body>
     <section id="title"><h1>Rock Paper Scissors</h1></section>
     <section id="heroBox">
-      <hero>
+      <section class="hero">
         <div id="heroHead">
           <h1>Rock Paper Scissors</h1>
         </div>
@@ -41,15 +41,28 @@
             <div class="answer">42</div>
           </section>
         </div>
-      </hero>
+      </section>
     </section>
 
     <section class="gameUI">
+      <h2 class="prompt">Choose your weapon</h2>
+
       <div id="logContainer"></div>
 
-      <button class="choices rock" data-choice="rock">Rock</button>
-      <button class="choices paper" data-choice="paper">Paper</button>
-      <button class="choices scissors" data-choice="scissors">Scissors</button>
+      <div class="buttonRow">
+        <button class="choices rock imgButton" data-choice="rock">
+          <img src="/src/rock.svg" alt="Rock" />
+        </button>
+
+        <button class="choices paper imgButton" data-choice="paper">
+          <img src="/src/paper.svg" alt="Paper" />
+        </button>
+
+        <button class="choices scissors imgButton" data-choice="scissors">
+          <img src="/src/scissors.svg" alt="Scissors" />
+        </button>
+      </div>
+
       <button id="newGame" class="hidden">Continue?</button>
     </section>
   </body>

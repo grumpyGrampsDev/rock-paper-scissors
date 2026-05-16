@@ -72,7 +72,7 @@ function getFinalWinner(results) {
   const losses = results.filter((r) => r === "loss").length;
 
   if (wins > losses) return "You win the game!";
-  if (losses > wins) return "Computer wins the game!";
+  if (losses > wins) return "The Old Man wins the game!";
   return "The game is a tie!";
 }
 
@@ -85,7 +85,7 @@ function userSelect() {
     button.addEventListener("click", (event) => {
       if (roundsPlayed >= 5) return;
 
-      const thrown = event.target.dataset.choice;
+      const thrown = event.currentTarget.dataset.choice;
 
       logMessage(`You threw: ${thrown}`);
 
