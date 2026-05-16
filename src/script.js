@@ -5,6 +5,7 @@ console.log("The script is loaded");
 let roundsPlayed = 0;
 let results = [];
 let currentRoundContainer = null;
+let prompt;
 
 // DOM
 
@@ -23,15 +24,32 @@ function startNewRound() {
 
 // LOGGING
 
-function logMessage(message) {
-  const entry = document.createElement("p");
-  entry.textContent = message;
+function init() {
+  prompt = document.querySelector(".prompt");
+}
 
+function ensureRoundExists() {
   if (!currentRoundContainer) {
     startNewRound();
   }
+}
+
+function logMessage(message) {
+  ensureRoundExists();
+
+  const entry = document.createElement("p");
+  entry.textContent = message;
 
   currentRoundContainer.appendChild(entry);
+
+  // AUTO-SCROLL FIX
+  requestAnimationFrame(() => {
+    logContainer.scrollTo({
+      top: logContainer.scrollHeight,
+
+      behavior: "smooth",
+    });
+  });
 }
 
 // GAME LOGIC
@@ -71,9 +89,9 @@ function getFinalWinner(results) {
   const wins = results.filter((r) => r === "win").length;
   const losses = results.filter((r) => r === "loss").length;
 
-  if (wins > losses) return "You win the game!";
-  if (losses > wins) return "The Old Man wins the game!";
-  return "The game is a tie!";
+  if (wins > losses) return "Player wins";
+  if (losses > wins) return "Old man wins";
+  return "Tie";
 }
 
 // INPUT HANDLING
@@ -84,22 +102,25 @@ function userSelect() {
   btns.forEach((button) => {
     button.addEventListener("click", (event) => {
       if (roundsPlayed >= 5) return;
-
       const thrown = event.currentTarget.dataset.choice;
-
       logMessage(`You threw: ${thrown}`);
-
       const result = playRound(thrown);
       results.push(result);
-
       roundsPlayed++;
-
       if (roundsPlayed < 5) {
         startNewRound();
       }
 
       if (roundsPlayed === 5) {
-        logMessage(getFinalWinner(results));
+        const winner = getFinalWinner(results);
+        logMessage(winner);
+        if (winner === "Player wins") {
+          prompt.textContent = "You've bested me this time.";
+        } else if (winner === "Old man wins") {
+          prompt.textContent = "I've won this time.";
+        } else {
+          prompt.textContent = "We are evenly matched.";
+        }
         newGameBtn.classList.remove("hidden");
       }
     });
@@ -112,18 +133,14 @@ function resetGame() {
   roundsPlayed = 0;
   results = [];
   currentRoundContainer = null;
-
   logContainer.replaceChildren();
-
   newGameBtn.classList.add("hidden");
-
+  prompt.textContent = "Choose your weapon";
   startNewRound();
   logMessage("New game started");
 }
 
 // INIT
-
-newGameBtn.addEventListener("click", resetGame);
-
+init();
 userSelect();
-startNewRound();
+newGameBtn.addEventListener("click", resetGame);
