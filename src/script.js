@@ -42,7 +42,7 @@ function logMessage(message) {
 
   currentRoundContainer.appendChild(entry);
 
-  // AUTO-SCROLL FIX
+  // AUTO-SCROLL
   requestAnimationFrame(() => {
     logContainer.scrollTo({
       top: logContainer.scrollHeight,
@@ -141,6 +141,7 @@ function resetGame() {
 }
 
 // INIT
+
 init();
 userSelect();
 newGameBtn.addEventListener("click", resetGame);

@@ -165,8 +165,8 @@ body {
 }
 
 #newGame {
-  position: static; /* REMOVE absolute */
-  margin-top: auto; /* pushes it toward bottom naturally */
+  position: static;
+  margin-top: auto;
   width: clamp(110px, 18vw, 180px);
   padding: 10px 14px;
   background: rgba(110, 92, 78, 0.22);
@@ -212,13 +212,13 @@ body {
 }
 
 #logContainer {
-  position: static; /* REMOVE absolute */
+  position: static;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
   font-size: 10px;
   width: clamp(110px, 18vw, 180px);
-  flex: 1; /* <-- IMPORTANT */
+  flex: 1;
   overflow-y: auto;
   padding-bottom: 10px;
 }
